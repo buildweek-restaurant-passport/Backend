@@ -29,6 +29,7 @@ const createUser = async (req, res, next) => {
     const token = generateToken(payload, options);
 
     return res.status(201).json({
+      success: true,
       message: 'New user created',
       body: {
         user,
