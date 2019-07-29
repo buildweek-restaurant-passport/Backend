@@ -17,6 +17,7 @@ beforeAll(async () => {
   await db('users').truncate();
 });
 
+// [/api/v1/auth/register] [SUCCESS]
 describe('[POST] [/api/v1/auth/register] Register Test suite [SUCCESS]', () => {
   let response = null;
 
@@ -38,9 +39,12 @@ describe('[POST] [/api/v1/auth/register] Register Test suite [SUCCESS]', () => {
   });
 
   it('Should have response body of user object', () => {
-    expect(response.body.success).toBeTruthy();
     expect(response.body.message).toBe('New user created');
     expect(response.body.body).toHaveProperty('user');
+  });
+
+  it('Should have response body with success true', () => {
+    expect(response.body.success).toBeTruthy();
   });
 
   it('Should have a response body with token', () => {
@@ -48,6 +52,7 @@ describe('[POST] [/api/v1/auth/register] Register Test suite [SUCCESS]', () => {
   });
 });
 
+// [/api/v1/auth/register] [FAILURE]
 describe('[POST] [/api/v1/auth/register] Register Test suite [FAILURE]', () => {
   it('Should respond with status code of 400 on empty request body', async () => {
     const response = await request.post('/api/v1/auth/register').send({});
@@ -66,6 +71,7 @@ describe('[POST] [/api/v1/auth/register] Register Test suite [FAILURE]', () => {
   });
 });
 
+// [/api/v1/auth/login] [SUCCESS]
 describe('[POST] [/api/v1/auth/login] Login Test suite [SUCCESS]', () => {
   let response = null;
 
@@ -86,12 +92,47 @@ describe('[POST] [/api/v1/auth/login] Login Test suite [SUCCESS]', () => {
   });
 
   it('Should have response body of user object', () => {
-    expect(response.body.success).toBeTruthy();
     expect(response.body.message).toBe('Log in successful');
     expect(response.body.body).toHaveProperty('user');
   });
 
+  it('Should have response body with success true', () => {
+    expect(response.body.success).toBeTruthy();
+  });
+
   it('Should have a response body with token', () => {
     expect(response.body.body).toHaveProperty('token');
+  });
+});
+
+// [/api/v1/auth/register] [FAILURE]
+describe('[POST] [/api/v1/auth/login] Register Test suite [FAILURE]', () => {
+  it('Should respond with status code of 400 on empty request body', async () => {
+    const response = await request.post('/api/v1/auth/login').send({});
+    expect(response.status).toEqual(400);
+  });
+
+  it('Should respond with status code 404', async () => {
+    const response = await request.post('/api/v1/auth/login').send({
+      password: '123456',
+      email: 'junefake@gmail.com',
+    });
+    expect(response.status).toEqual(404);
+  });
+
+  it('Should respond with User does not exist', async () => {
+    const response = await request.post('/api/v1/auth/login').send({
+      password: '1234566',
+      email: 'june77@gmail.com',
+    });
+    expect(response.body.message).toEqual('User does not exist');
+  });
+
+  it('Should respond with status code 400', async () => {
+    const response = await request.post('/api/v1/auth/login').send({
+      password: '12345688',
+      email: 'june@gmail.com',
+    });
+    expect(response.status).toEqual(400);
   });
 });
