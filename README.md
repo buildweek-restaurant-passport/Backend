@@ -16,7 +16,7 @@ The following endpoints are available for use.
 | POST    | /api/v1/auth/login                    | Login user                        |
 | GET     | /api/v1/locations                     | Get list of cities                |
 | GET     | /api/v1/restaurants/:cityId           | Get restaurants by cityId         |
-| GET     | /api/v1/:userId/visited               | Get restaurants visited by user   |
+| GET     | /api/v1/:userId/passports             | Get passports of user             |
 | POST    | /api/v1/:userId/visited/:restaurantId | Post restaurant visited by user   |
 | DELETE  | /api/v1/:userId/visited/:restaurantId | Delete restaurant visited by user |
 
@@ -169,21 +169,34 @@ The following endpoints are available for use.
 
 #### Restaurants Visited By User [GET]
 
-**URL**: _https://restaurant-app-appi.herokuapp.com/api/v1/:userId/visited
+**URL**: _https://restaurant-app-appi.herokuapp.com/api/v1/:userId/passports
 **Payload**:
 
-**Returns**: An array
+**Returns**: An object of city ids with an object of city name ane state and an array of restaurant ids
 
 ```JSON
 {
     "success": true,
-    "message": "All Visited Restaurants For UserId :userId",
-    "body": [
-        4,
-        2,
-        90,
-        13
-    ]
+    "message": "All Passports Restaurants For UserId :userId",
+    "body": {
+        "60": {
+            "cityState": "New York City, NY",
+            "restaurantsVisited": [
+                3,
+                0,
+                9
+            ],
+         },
+        "3": {
+            "cityState": "Chicago, IL",
+            "restaurantsVisited": [
+                15,
+                99,
+                2,
+                25
+            ]
+        }
+    }
 }
 ```
 
