@@ -139,9 +139,12 @@ describe('[POST] [/api/v1/auth/restaurants] Update Restaurant Test suite [SUCCES
 
   beforeAll(async () => {
     /* Runs before all tests */
-    response = await request.post('/api/v1/auth/login').send({
+    response = await request.post('/api/v1/auth/register').send({
+      firstName: 'lulu',
+      lastName: 'martins',
       password: '123456',
-      email: 'june@gmail.com',
+      email: 'lulu@gmail.com',
+      city: 'New York city',
     });
 
     const { token } = response.body.body;
