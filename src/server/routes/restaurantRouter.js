@@ -1,12 +1,16 @@
 const express = require('express');
-const { getRestaurants, getRestaurantById } = require('../controllers/restaurants');
-const { validateIdParameter } = require('../middleware/restaurants');
+const { getRestaurants, getRestaurantById, addRestaurant } = require('../controllers/restaurants');
+const { validateIdParameter, validateRestaurantBody } = require('../middleware/restaurants');
+const verifyToken = require('../middleware/auth/verifyToken');
 
 const router = express.Router();
 
 router.param('id', validateIdParameter);
 
-router.route('/restaurants').get(getRestaurants);
+router
+  .route('/restaurants')
+  .get(getRestaurants)
+  .post(verifyToken, validateRestaurantBody, addRestaurant);
 
 router.route('/restaurants/:id').get(getRestaurantById);
 

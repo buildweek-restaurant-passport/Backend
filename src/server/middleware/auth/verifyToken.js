@@ -1,8 +1,6 @@
 const jwt = require('jsonwebtoken');
 const { User } = require('../../models');
-const {
-  createError, UNAUTHORIZED, GENERIC_ERROR, BAD_REQUEST,
-} = require('../../util/error.js');
+const { createError, UNAUTHORIZED, BAD_REQUEST } = require('../../util/error.js');
 
 /**
    * Verifies user provided token
@@ -58,8 +56,8 @@ const verifyToken = async (req, res, next) => {
 
     return next(
       createError({
-        message: 'Could not verify token',
-        status: GENERIC_ERROR,
+        message: 'The token you provided is invalid',
+        status: BAD_REQUEST,
       }),
     );
   }
