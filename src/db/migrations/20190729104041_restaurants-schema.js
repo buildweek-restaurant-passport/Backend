@@ -3,7 +3,10 @@
 exports.up = function (knex, Promise) {
   return knex.schema.createTable('restaurants', (restaurants) => {
     restaurants.increments();
-    restaurants.string('name').notNullable();
+    restaurants
+      .string('name')
+      .notNullable()
+      .unique();
     restaurants.string('country').notNullable();
     restaurants.string('city').notNullable();
     restaurants.string('type').notNullable();

@@ -7,7 +7,7 @@ exports.seed = function (knex, Promise) {
       lastName: 'Doe',
       email: 'john@gmail.com',
       city: 'New York City',
-      password: '$2b$12$3DLHQshuQu4E5ne9H5H5ReqygL4iMNpG/kP3Bg8kGWdgJ7d/W7Qpa',
+      password: '$2a$10$qP6PN9XUVUmi.inzf7N3l.RCftg7k0KnCzM1tzELPIHyNoaKe.CF2',
     },
   ]);
 };
