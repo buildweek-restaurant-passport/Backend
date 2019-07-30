@@ -10,6 +10,7 @@ const cors = require('cors');
 const allErrorHandler = require('./middleware/errors');
 const { NOT_FOUND } = require('./util/error');
 const userRouter = require('./routes/userRouter');
+const restaurantRouter = require('./routes/restaurantRouter');
 
 const app = express();
 
@@ -30,6 +31,7 @@ app.get('/', (req, res) => res.status(200).json({
 }));
 
 app.use('/api/v1/auth', userRouter);
+app.use('/api/v1', restaurantRouter);
 
 // Handle invalid request
 app.all('*', (req, res) => res.status(NOT_FOUND).json({

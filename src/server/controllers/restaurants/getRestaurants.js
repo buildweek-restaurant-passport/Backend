@@ -10,9 +10,7 @@ const { createError, GENERIC_ERROR } = require('../../util/error');
  */
 const getRestaurants = async (req, res, next) => {
   try {
-    const restaurantDetails = req.body.sanitizedBody;
-
-    const restaurants = await Restaurant.insert(restaurantDetails);
+    const restaurants = await Restaurant.getAll();
 
     return res.status(200).json({
       success: true,
