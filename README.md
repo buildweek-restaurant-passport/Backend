@@ -10,13 +10,15 @@ The restaurant app api is hosted on Heroku [here](https://restaurant-app-appi.he
 
 The following endpoints are available for use.
 
-| Methods | Endpoint                | Description             |
-| ------- | ----------------------- | ----------------------- |
-| POST    | /api/v1/auth/register   | Register a user         |
-| POST    | /api/v1/auth/login      | Login user              |
-| GET     | /api/v1/restaurants     | show all restaurants    |
-| GET     | /api/v1/restaurants/:id | Get restaurant by id    |
-| PUT     | /api/v1/restaurants/:id | Update restaurant by id |
+| Methods | Endpoint                              | Description                       |
+| ------- | ------------------------------------- | --------------------------------- |
+| POST    | /api/v1/auth/register                 | Register a user                   |
+| POST    | /api/v1/auth/login                    | Login user                        |
+| GET     | /api/v1/locations                     | Get list of cities                |
+| GET     | /api/v1/restaurants/:cityId           | Get restaurants by cityId         |
+| GET     | /api/v1/:userId/visited               | Get restaurants visited by user   |
+| POST    | /api/v1/:userId/visited/:restaurantId | Post restaurant visited by user   |
+| DELETE  | /api/v1/:userId/visited/:restaurantId | Delete restaurant visited by user |
 
 #### Register User Schema
 
@@ -141,7 +143,7 @@ The following endpoints are available for use.
 ```JSON
 {
     "success": true,
-    "message": "All Restaurants By CityId",
+    "message": `All Restaurants From CityId ${cityId}`,
     "body": [
         {
             "id": 1,
@@ -154,6 +156,7 @@ The following endpoints are available for use.
         },
         {
             "id": 2,
+            "cityId": 6,
             "name": "Le Coucou",
             "cuisine": "Mexican",
             "environment": "casual",
