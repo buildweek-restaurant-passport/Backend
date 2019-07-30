@@ -143,7 +143,7 @@ The following endpoints are available for use.
 ```JSON
 {
     "success": true,
-    "message": `All Restaurants From CityId ${cityId}`,
+    "message": "All Restaurants From CityId :cityId",
     "body": [
         {
             "id": 1,
@@ -177,7 +177,7 @@ The following endpoints are available for use.
 ```JSON
 {
     "success": true,
-    "message": `All Visited Restaurants For UserId ${userId}`,
+    "message": "All Visited Restaurants For UserId :userId",
     "body": [
         4,
         2,
@@ -197,7 +197,7 @@ The following endpoints are available for use.
 ```JSON
 {
     "success": true,
-    "message": `restaurantID ${restaurantId} added to userID ${userId}`
+    "message": "restaurantID :restaurantId added to userID :userId"
 }
 ```
 
@@ -211,7 +211,7 @@ The following endpoints are available for use.
 ```JSON
 {
     "success": true,
-    "message": `restaurantID ${restaurantId} removed from userID ${userId}`
+    "message": "restaurantID :restaurantId removed from userID :userId"
 }
 ```
 
