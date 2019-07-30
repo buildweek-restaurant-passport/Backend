@@ -1,4 +1,4 @@
-const { Restaurant } = '../../models';
+const { Restaurant } = require('../../models');
 const { NOT_FOUND, createError } = require('../../util/error');
 
 /**
@@ -13,17 +13,26 @@ const validateIdParameter = async (req, res, next, restaurantID) => {
   try {
     const restaurant = await Restaurant.getById(restaurantID);
 
+    if (!restaurant) {
+      return next(
+        createError({
+          message: 'No Restaurant with the given ID',
+          status: NOT_FOUND,
+        }),
+      );
+    }
+
     req.restaurant = restaurant;
 
     return next();
   } catch (error) {
     return next(
       createError({
-        message: 'No Restaurant with the given ID',
+        message: 'Could not get restaurant with the specified id',
         status: NOT_FOUND,
       }),
     );
   }
 };
 
-export default validateIdParameter;
+module.exports = validateIdParameter;
