@@ -58,9 +58,6 @@ typings/
 .env
 .env.test
 
-# database file
-*.db3
-
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 
