@@ -33,6 +33,9 @@ const userSchema = Joi.object().keys({
   city: Joi.string()
     .trim()
     .required(),
+  cityId: Joi.string()
+    .trim()
+    .required(),
 });
 
 /**

@@ -21,6 +21,9 @@ const restaurantSchema = Joi.object().keys({
   description: Joi.string()
     .trim()
     .required(),
+  cityId: Joi.string()
+    .trim()
+    .required(),
 });
 
 /**

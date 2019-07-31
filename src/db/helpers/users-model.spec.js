@@ -9,6 +9,7 @@ const userDetails = {
   lastName: 'AllFake',
   password: '123456',
   email: 'fake@yahoo.com',
+  cityId: '111-888-000',
   city: 'Lagos',
 };
 
@@ -29,6 +30,7 @@ describe('User Model helper functions Test suite', () => {
         firstName: 'Fake',
         lastName: 'AllFake',
         email: 'fake@yahoo.com',
+        cityId: '111-888-000',
         city: 'Lagos',
       });
     });
@@ -42,6 +44,7 @@ describe('User Model helper functions Test suite', () => {
         firstName: 'Fake',
         lastName: 'AllFake',
         email: 'fake@yahoo.com',
+        cityId: '111-888-000',
         city: 'Lagos',
       });
     });
@@ -55,6 +58,7 @@ describe('User Model helper functions Test suite', () => {
         firstName: 'Fake',
         lastName: 'AllFake',
         email: 'fake@yahoo.com',
+        cityId: '111-888-000',
         city: 'Lagos',
       });
     });
@@ -69,6 +73,7 @@ describe('User Model helper functions Test suite', () => {
         firstName: 'Fake',
         lastName: 'AllFake',
         email: 'fake@yahoo.com',
+        cityId: '111-888-000',
         city: 'Abuja',
       };
     });

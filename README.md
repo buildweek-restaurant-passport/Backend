@@ -10,15 +10,15 @@ The restaurant app api is hosted on Heroku [here](https://restaurant-app-appi.he
 
 The following endpoints are available for use.
 
-| Methods | Endpoint                              | Description                       |
-| ------- | ------------------------------------- | --------------------------------- |
-| POST    | /api/v1/auth/register                 | Register a user                   |
-| POST    | /api/v1/auth/login                    | Login user                        |
-| GET     | /api/v1/locations                     | Get list of cities                |
-| GET     | /api/v1/restaurants/:cityId           | Get restaurants by cityId         |
-| GET     | /api/v1/:userId/passports             | Get passports of user             |
-| POST    | /api/v1/:userId/visited/:restaurantId | Post restaurant visited by user   |
-| DELETE  | /api/v1/:userId/visited/:restaurantId | Delete restaurant visited by user |
+| Methods | Endpoint                        | Description                       |
+| ------- | ------------------------------- | --------------------------------- |
+| POST    | /api/v1/auth/register           | Register a user                   |
+| POST    | /api/v1/auth/login              | Login user                        |
+| GET     | /api/v1/locations               | Get list of cities                |
+| GET     | /api/v1/restaurants/city/:cityId| Get restaurants by cityId         |
+| POST    | /api/v1/restaurants/visited     | Add visited restaurants           |
+| DELETE  | /api/v1/restaurants/:id/visited | Delete restaurant visited by user |
+| GET     | /api/v1/passports               | Get passports by user ID          |
 
 #### Register User Schema
 
@@ -29,6 +29,7 @@ The following endpoints are available for use.
 |   email   |  string   | required, unique |
 | password  |  string   |     required     |
 |   city    |  string   |     required     |
+|  cityId   |  string   |     required     |
 
 #### Login User Schema
 
@@ -46,6 +47,7 @@ The following endpoints are available for use.
 |    city     |  string   | required, maximum of 250 characters. |
 |    type     |  string   |              required,               |
 | description |  string   |               required               |
+|   cityId    |  string   |               required               |
 
 ### Authentication Endpoints
 
@@ -60,7 +62,8 @@ The following endpoints are available for use.
     "lastName": "Doe",
     "email": "janeDoe2@doe.com",
     "password": "123456",
-    "city": "NYC"
+    "city": "NYC",
+    "cityId": "00039-27733-999"
 }
 ```
 
@@ -76,7 +79,8 @@ The following endpoints are available for use.
             "firstName": "John",
             "lastName": "Doe",
             "city": "NYC",
-            "email": "janeDoe2@doe.com"
+            "email": "janeDoe2@doe.com",
+            "cityId": "00039-27733-999"
         },
         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCIougbchshchsckhjbcs"
     }
@@ -107,7 +111,8 @@ The following endpoints are available for use.
             "firstName": "John",
             "lastName": "Doe",
             "city": "New York City",
-            "email": "john@gmail.com"
+            "email": "john@gmail.com",
+            "cityId": "00039-27733-999"
         },
         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZljdbcdbcbcbcdjcjdbc"
     }
@@ -247,6 +252,7 @@ The following endpoints are available for use.
             "name": "Famous Amadeus Pizza",
             "country": "US",
             "city": "New York City",
+            "cityId": "00039-27733-999",
             "type": "italian",
             "description": "This is the most mouth watering Ny Pizza in the neighborhood. Delicious hot, cheesy, crusty and flavorful. A crowd pleaser pizza for sure."
         },
@@ -255,6 +261,7 @@ The following endpoints are available for use.
             "name": "Le Coucou",
             "country": "US",
             "city": "New York City",
+            "cityId": "00039-27733-999",
             "type": "Mexican",
             "description": "You'll see chefs in tall hats the color of cream, chandeliers sparkling along the length of the ceiling, and a gorgeous bar you can lean against as if you were in Paris. The air here smells of butter, onion, and seared steak. It’s a French restaurant of the old school, which might entail Lyon’s famous quenelle de brochet (ethereally light pike in a creamy lobster bisque) or rabbit cooked three ways. Look for the halibut in beurre blanc, sweetbreads with tarragon, or the divine filet de boeuf with bone marrow."
         },
@@ -263,6 +270,7 @@ The following endpoints are available for use.
             "name": "De place",
             "country": "Nigeria",
             "city": "Lagos, island",
+            "cityId": "00039-27733-999",
             "type": "African",
             "description": "This is the most mouth watering Ny Pizza in the neighborhood. Delicious hot, cheesy, crusty and flavorful. A crowd pleaser pizza for sure."
         },
@@ -272,6 +280,7 @@ The following endpoints are available for use.
             "country": "Ghana",
             "city": "Ghana",
             "type": "African",
+            "cityId": "00039-27733-999",
             "description": "This is the most mouth watering Ny Pizza in the neighborhood. Delicious hot, cheesy, crusty and flavorful. A crowd pleaser pizza for sure."
         }
     ]
@@ -292,6 +301,7 @@ The following endpoints are available for use.
         "name": "Famous Amadeus Pizza",
         "country": "US",
         "city": "New York City",
+        "cityId": "00039-27733-999",
         "type": "italian",
         "description": "This is the most mouth watering Ny Pizza in the neighborhood. Delicious hot, cheesy, crusty and flavorful. A crowd pleaser pizza for sure."
     }
@@ -315,6 +325,7 @@ The following endpoints are available for use.
         "name": "Judy food",
         "country": "Canada",
         "city": "louis",
+        "cityId": "00039-27733-999",
         "type": "N/A",
         "description": "Waiting for descrip"
     }
@@ -336,6 +347,7 @@ The following endpoints are available for use.
         "name": "Judy foody",
         "country": "London",
         "city": "louis",
+        "cityId": "00039-27733-999",
         "type": "N/A",
         "description": "Waiting for descrip"
     }
