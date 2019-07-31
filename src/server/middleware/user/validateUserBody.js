@@ -30,10 +30,7 @@ const userSchema = Joi.object().keys({
     .label('Email')
     .trim()
     .required(),
-  city: Joi.string()
-    .trim()
-    .required(),
-  cityId: Joi.string()
+  username: Joi.string()
     .trim()
     .required(),
 });

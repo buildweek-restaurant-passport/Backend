@@ -60,11 +60,11 @@ const create = (knex) => {
       .then(count => (count > 0 ? getVisited(userId) : null));
   }
 
-  function getVisitedByRestaurantId({ userId, restaurantId }) {
+  function getUserVisitedRestaurant({ userId, restaurantId }) {
     return knex('visited_restaurant')
-      .where('restaurantId', restaurantId)
       .where('userId', userId)
-      .then(restaurant => (restaurant > 0 ? restaurant : null));
+      .where('restaurantId', restaurantId)
+      .first();
   }
 
   // Restaurant is the model name
@@ -79,7 +79,7 @@ const create = (knex) => {
     addVisited,
     getVisited,
     removeVisited,
-    getVisitedByRestaurantId,
+    getUserVisitedRestaurant,
   };
 };
 

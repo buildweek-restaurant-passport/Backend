@@ -16,7 +16,7 @@ const login = async (req, res, next) => {
   try {
     const credential = req.body.sanitizedBody;
 
-    const user = await User.getByEmail(credential.email);
+    const user = await User.getByUsername(credential.username);
 
     if (!user || Object.keys(user).length === 0) {
       return next(
@@ -32,7 +32,7 @@ const login = async (req, res, next) => {
     if (!isPasswordValid) {
       return next(
         createError({
-          message: 'Invalid email/password',
+          message: 'Invalid username/password',
           status: BAD_REQUEST,
         }),
       );

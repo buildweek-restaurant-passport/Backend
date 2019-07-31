@@ -6,8 +6,10 @@ exports.up = function (knex, Promise) {
 
     users.string('firstName').notNullable();
     users.string('lastName').notNullable();
-    users.string('city').notNullable();
-    users.string('cityId').notNullable();
+    users
+      .string('username')
+      .notNullable()
+      .unique();
     users
       .string('email')
       .notNullable()
