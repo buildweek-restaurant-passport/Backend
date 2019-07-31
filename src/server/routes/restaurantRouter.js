@@ -7,6 +7,7 @@ const {
   getByCityId,
   addUserVisitedRestaurant,
   getAllVisitedRestaurant,
+  deleteUserVisitedRestaurant,
 } = require('../controllers/restaurants');
 const { validateIdParameter, validateRestaurantBody } = require('../middleware/restaurants');
 const verifyToken = require('../middleware/auth/verifyToken');
@@ -29,6 +30,10 @@ router
   .get(getRestaurantById)
   .put(validateRestaurantBody, updateRestaurant);
 
-router.route('/restaurants/:id/visited').post(verifyToken, addUserVisitedRestaurant);
+router
+  .route('/restaurants/:id/visited')
+  .all(verifyToken)
+  .post(addUserVisitedRestaurant)
+  .delete(deleteUserVisitedRestaurant);
 
 module.exports = router;

@@ -54,12 +54,20 @@ const create = (knex) => {
 
   function removeVisited({ userId, restaurantId }) {
     return knex('visited_restaurant')
-      .where({ restaurantId, userId })
+      .where('restaurantId', restaurantId)
+      .where('userId', userId)
       .del()
       .then(count => (count > 0 ? getVisited(userId) : null));
   }
 
-  // joke is the model name
+  function getVisitedByRestaurantId({ userId, restaurantId }) {
+    return knex('visited_restaurant')
+      .where('restaurantId', restaurantId)
+      .where('userId', userId)
+      .then(restaurant => (restaurant > 0 ? restaurant : null));
+  }
+
+  // Restaurant is the model name
   return {
     name: 'Restaurant',
     getById,
@@ -71,6 +79,7 @@ const create = (knex) => {
     addVisited,
     getVisited,
     removeVisited,
+    getVisitedByRestaurantId,
   };
 };
 
