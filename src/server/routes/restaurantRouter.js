@@ -5,6 +5,7 @@ const {
   addRestaurant,
   updateRestaurant,
   getByCityId,
+  addUserVisitedRestaurant,
 } = require('../controllers/restaurants');
 const { validateIdParameter, validateRestaurantBody } = require('../middleware/restaurants');
 const verifyToken = require('../middleware/auth/verifyToken');
@@ -24,5 +25,7 @@ router
   .route('/restaurants/:id')
   .get(getRestaurantById)
   .put(validateRestaurantBody, updateRestaurant);
+
+router.route('/restaurants/:id/visited').post(verifyToken, addUserVisitedRestaurant);
 
 module.exports = router;
