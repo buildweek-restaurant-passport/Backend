@@ -11,9 +11,8 @@ const loginSchema = Joi.object().keys({
     .label('Password')
     .trim()
     .required(),
-  email: Joi.string()
-    .email()
-    .label('Email')
+  username: Joi.string()
+    .label('Username')
     .trim()
     .required(),
 });

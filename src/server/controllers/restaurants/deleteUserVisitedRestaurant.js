@@ -13,18 +13,18 @@ const deleteUserVisitedRestaurant = async (req, res, next) => {
   try {
     const { id } = req.restaurant;
 
-    const restaurant = await Restaurant.getVisitedByRestaurantId({ userId: req.user.id, restaurantId: id });
+    const restaurant = await Restaurant.getUserVisitedRestaurant({ userId: req.user.id, restaurantId: id });
 
     if (!restaurant) {
       return next(
         createError({
-          message: 'Visited restaurant with specified id is invalid',
+          message: 'Restaurant with specified id is invalid',
           status: NOT_FOUND,
         }),
       );
     }
 
-    await Restaurant.removeVisited({ userId: req.user.id, restaurantId: id });
+    await Restaurant.removeVisited({ userId: req.user.id, restaurantId: restaurant.restaurantId });
 
     return res.status(200).json({
       success: true,

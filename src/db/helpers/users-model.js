@@ -21,6 +21,12 @@ const create = (knex) => {
       .first();
   }
 
+  function getByUsername(username) {
+    return knex('users')
+      .where({ username })
+      .first();
+  }
+
   function createUser(user) {
     return knex('users')
       .insert(user)
@@ -49,6 +55,7 @@ const create = (knex) => {
     remove,
     createUser,
     getByEmail,
+    getByUsername,
   };
 };
 
