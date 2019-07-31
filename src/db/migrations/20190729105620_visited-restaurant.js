@@ -3,6 +3,7 @@
 exports.up = function (knex, Promise) {
   return knex.schema.createTable('visited_restaurant', (restaurants) => {
     restaurants.increments();
+    restaurants.unique(['restaurantId', 'userId']);
     restaurants
       .integer('userId')
       .notNullable()

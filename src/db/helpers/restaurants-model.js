@@ -26,10 +26,11 @@ const create = (knex) => {
   }
 
   function getVisited(userId) {
-    return knex('restaurants as r')
-      .join('visited_restaurant as vr', 'vr.restaurant_id', 'r.id')
-      .join('users as u', 'u.id', 'vr.user_id')
-      .where('user_id', userId);
+    return knex
+      .select('r.id', 'r.name', 'r.country', 'r.city', 'r.cityId', 'r.type', 'r.description')
+      .from('restaurants as r')
+      .innerJoin('visited_restaurant as vr', 'vr.restaurantId', 'r.id')
+      .where('userId', userId);
   }
 
   function addVisited(data) {
