@@ -1,6 +1,10 @@
 const express = require('express');
 const {
-  getRestaurants, getRestaurantById, addRestaurant, updateRestaurant,
+  getRestaurants,
+  getRestaurantById,
+  addRestaurant,
+  updateRestaurant,
+  getByCityId,
 } = require('../controllers/restaurants');
 const { validateIdParameter, validateRestaurantBody } = require('../middleware/restaurants');
 const verifyToken = require('../middleware/auth/verifyToken');
@@ -13,6 +17,8 @@ router
   .route('/restaurants')
   .get(getRestaurants)
   .post(verifyToken, validateRestaurantBody, addRestaurant);
+
+router.route('/restaurants/city/:cityId').get(verifyToken, getByCityId);
 
 router
   .route('/restaurants/:id')

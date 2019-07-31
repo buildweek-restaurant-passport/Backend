@@ -10,14 +10,14 @@ const { createError, GENERIC_ERROR, NOT_FOUND } = require('../../util/error');
  */
 const getByCityId = async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const { cityId } = req.params;
 
-    const restaurant = await Restaurant.getByCityID(id);
+    const restaurant = await Restaurant.getByCityID(cityId);
 
-    if (!restaurant) {
+    if (restaurant.length < 1) {
       return next(
         createError({
-          message: `Restaurant with the city id ${id} not found`,
+          message: `Restaurant with the city id ${cityId} not found`,
           status: NOT_FOUND,
         }),
       );
