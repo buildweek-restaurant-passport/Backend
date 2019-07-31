@@ -9,6 +9,7 @@ exports.up = function (knex, Promise) {
       .unique();
     restaurants.string('country').notNullable();
     restaurants.string('city').notNullable();
+    restaurants.string('cityId').notNullable();
     restaurants.string('type').notNullable();
     restaurants.string('description').notNullable();
   });

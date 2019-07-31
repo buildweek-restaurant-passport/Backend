@@ -9,6 +9,7 @@ const restaurant = {
   name: 'Famous Amadeus Pizza',
   country: 'US',
   city: 'New York City',
+  cityId: '10004-3333-555',
   type: 'italian',
   description:
 		'This is the most mouth watering Ny Pizza in the neighborhood. Delicious hot, cheesy, crusty and flavorful. A crowd pleaser pizza for sure.',
@@ -30,6 +31,7 @@ describe('[POST] [/api/v1/auth/restaurants] Create Restaurant Test suite [SUCCES
       lastName: 'dolo',
       password: '123456',
       email: 'dele@gmail.com',
+      cityId: '10004-3333-555',
       city: 'New York city',
     });
 
@@ -144,6 +146,7 @@ describe('[POST] [/api/v1/auth/restaurants] Update Restaurant Test suite [SUCCES
       lastName: 'martins',
       password: '123456',
       email: 'lulu@gmail.com',
+      cityId: '10004-3333-555',
       city: 'New York city',
     });
 
@@ -155,6 +158,7 @@ describe('[POST] [/api/v1/auth/restaurants] Update Restaurant Test suite [SUCCES
         name: 'Famous Amadeus PizzaRooo',
         country: 'London',
         city: 'New York City',
+        cityId: '10004-3333-555',
         type: 'italian',
         description:
 					'This is the most mouth watering Ny Pizza in the neighborhood. Delicious hot, cheesy, crusty and flavorful. A crowd pleaser pizza for sure.',
@@ -180,6 +184,7 @@ describe('[POST] [/api/v1/auth/restaurants] Update Restaurant Test suite [SUCCES
       name: 'Famous Amadeus PizzaRooo',
       country: 'London',
       city: 'New York City',
+      cityId: '10004-3333-555',
       type: 'italian',
       description:
 				'This is the most mouth watering Ny Pizza in the neighborhood. Delicious hot, cheesy, crusty and flavorful. A crowd pleaser pizza for sure.',

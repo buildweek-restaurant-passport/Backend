@@ -9,6 +9,7 @@ const user = {
   lastName: 'Demy',
   password: '123456',
   email: 'june@gmail.com',
+  cityId: '10004-3333-555',
   city: 'New York city',
 };
 
@@ -65,6 +66,7 @@ describe('[POST] [/api/v1/auth/register] Register Test suite [FAILURE]', () => {
       lastName: 'Demy',
       password: '123456',
       email: 'june@gmail.com',
+      cityId: '10004-3333-555',
       city: 'New York city',
     });
     expect(response.status).toEqual(409);
