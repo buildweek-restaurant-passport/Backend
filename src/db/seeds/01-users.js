@@ -6,8 +6,7 @@ exports.seed = function (knex, Promise) {
       firstName: 'John',
       lastName: 'Doe',
       email: 'john@gmail.com',
-      city: 'New York City',
-      cityId: '10004-3333-555',
+      username: 'john44',
       password: '$2a$10$qP6PN9XUVUmi.inzf7N3l.RCftg7k0KnCzM1tzELPIHyNoaKe.CF2',
     },
   ]);
