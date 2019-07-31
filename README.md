@@ -17,6 +17,7 @@ The following endpoints are available for use.
 | GET     | /api/v1/locations                | Get list of cities                |
 | GET     | /api/v1/restaurants/city/:cityId | Get restaurants by cityId         |
 | POST    | /api/v1/restaurants/:id/visited  | Add visited restaurants           |
+| GET     | /api/v1/restaurants/visited      | Get visited restaurants           |
 | DELETE  | /api/v1/restaurants/:id/visited  | Delete restaurant visited by user |
 | GET     | /api/v1/passports                | Get passports by user ID          |
 
