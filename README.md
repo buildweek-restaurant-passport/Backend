@@ -15,7 +15,7 @@ The following endpoints are available for use.
 | POST    | /api/v1/auth/register           | Register a user                   |
 | POST    | /api/v1/auth/login              | Login user                        |
 | GET     | /api/v1/locations               | Get list of cities                |
-| GET     | /api/v1/restaurants/city/:id    | Get restaurants by cityId         |
+| GET     | /api/v1/restaurants/city/:cityId| Get restaurants by cityId         |
 | POST    | /api/v1/restaurants/visited     | Add visited restaurants           |
 | DELETE  | /api/v1/restaurants/:id/visited | Delete restaurant visited by user |
 | GET     | /api/v1/passports               | Get passports by user ID          |
@@ -118,6 +118,123 @@ The following endpoints are available for use.
     }
 }
 ```
+### What is needed
+#### Locations [GET]
+
+**URL**: _https://restaurant-app-appi.herokuapp.com/api/v1/locations
+**Payload**:
+
+**Returns**: An object
+
+```JSON
+{
+    "success": true,
+    "message": "All Locations",
+    "body": {
+        "id": 1,
+        "cityState": "New York City, NY",
+        "country": "US"
+    }
+}
+```
+
+#### Restaurants By City Id [GET]
+
+**URL**: _https://restaurant-app-appi.herokuapp.com/api/v1/restaurants/:cityId
+**Payload**:
+
+**Returns**: An array of objects
+
+```JSON
+{
+    "success": true,
+    "message": "All Restaurants From CityId :cityId",
+    "body": [
+        {
+            "id": 1,
+            "cityId": 6,
+            "name": "Famous Amadeus Pizza",
+            "cuisine": "italian",
+            "environment": "casual",
+            "address": "123 Abc St.",
+            "description": "This is the most mouth watering Ny Pizza in the neighborhood. Delicious hot, cheesy, crusty and flavorful. A crowd pleaser pizza for sure."
+        },
+        {
+            "id": 2,
+            "cityId": 6,
+            "name": "Le Coucou",
+            "cuisine": "Mexican",
+            "environment": "casual",
+            "address": "456 Def Rd.",
+            "description": "You'll see chefs in tall hats the color of cream, chandeliers sparkling along the length of the ceiling, and a gorgeous bar you can lean against as if you were in Paris. The air here smells of butter, onion, and seared steak. It’s a French restaurant of the old school, which might entail Lyon’s famous quenelle de brochet (ethereally light pike in a creamy lobster bisque) or rabbit cooked three ways. Look for the halibut in beurre blanc, sweetbreads with tarragon, or the divine filet de boeuf with bone marrow."
+        }
+    ]
+}
+```
+
+#### Restaurants Visited By User [GET]
+
+**URL**: _https://restaurant-app-appi.herokuapp.com/api/v1/:userId/passports
+**Payload**:
+
+**Returns**: An object of city ids with an object of city name ane state and an array of restaurant ids
+
+```JSON
+{
+    "success": true,
+    "message": "All Passports Restaurants For UserId :userId",
+    "body": {
+        "60": {
+            "cityState": "New York City, NY",
+            "restaurantsVisited": [
+                3,
+                0,
+                9
+            ],
+         },
+        "3": {
+            "cityState": "Chicago, IL",
+            "restaurantsVisited": [
+                15,
+                99,
+                2,
+                25
+            ]
+        }
+    }
+}
+```
+
+#### Restaurants Visited By User [POST]
+
+**URL**: _https://restaurant-app-appi.herokuapp.com/api/v1/:userId/visited/:restaurantId
+**Payload**:
+
+**Returns**: A message
+
+```JSON
+{
+    "success": true,
+    "message": "restaurantID :restaurantId added to userID :userId"
+}
+```
+
+#### Restaurants Visited By User [DELETE]
+
+**URL**: _https://restaurant-app-appi.herokuapp.com/api/v1/:userId/visited/:restaurantId
+**Payload**:
+
+**Returns**: A message
+
+```JSON
+{
+    "success": true,
+    "message": "restaurantID :restaurantId removed from userID :userId"
+}
+```
+
+### None of the items below this line are needed
+<-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=->
 
 #### Get all restaurants [GET]
 
