@@ -4,7 +4,7 @@ exports.up = function (knex, Promise) {
   return knex.schema.createTable('visited_restaurant', (restaurants) => {
     restaurants.increments();
     restaurants
-      .integer('user_id')
+      .integer('userId')
       .notNullable()
       .references('id')
       .inTable('users')
@@ -12,7 +12,7 @@ exports.up = function (knex, Promise) {
       .onDelete('CASCADE');
 
     restaurants
-      .integer('restaurant_id')
+      .integer('restaurantId')
       .notNullable()
       .references('id')
       .inTable('restaurants')

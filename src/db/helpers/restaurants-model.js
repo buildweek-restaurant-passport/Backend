@@ -35,7 +35,7 @@ const create = (knex) => {
   function addVisited(data) {
     return knex('visited_restaurant')
       .insert(data)
-      .then(() => getVisited(data.user_id));
+      .then(() => getVisited(data.userId));
   }
 
   function update(id, changes) {
