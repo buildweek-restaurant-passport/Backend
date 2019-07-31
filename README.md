@@ -10,13 +10,15 @@ The restaurant app api is hosted on Heroku [here](https://restaurant-app-appi.he
 
 The following endpoints are available for use.
 
-| Methods | Endpoint                | Description             |
-| ------- | ----------------------- | ----------------------- |
-| POST    | /api/v1/auth/register   | Register a user         |
-| POST    | /api/v1/auth/login      | Login user              |
-| GET     | /api/v1/restaurants     | show all restaurants    |
-| GET     | /api/v1/restaurants/:id | Get restaurant by id    |
-| PUT     | /api/v1/restaurants/:id | Update restaurant by id |
+| Methods | Endpoint                        | Description                       |
+| ------- | ------------------------------- | --------------------------------- |
+| POST    | /api/v1/auth/register           | Register a user                   |
+| POST    | /api/v1/auth/login              | Login user                        |
+| GET     | /api/v1/locations               | Get list of cities                |
+| GET     | /api/v1/restaurants/city/:id    | Get restaurants by cityId         |
+| POST    | /api/v1/restaurants/visited     | Add visited restaurants           |
+| DELETE  | /api/v1/restaurants/:id/visited | Delete restaurant visited by user |
+| GET     | /api/v1/passports               | Get passports by user ID          |
 
 #### Register User Schema
 
