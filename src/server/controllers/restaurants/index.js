@@ -5,6 +5,7 @@ const updateRestaurant = require('./updateRestaurant');
 const getByCityId = require('./getByCityId');
 const addUserVisitedRestaurant = require('./addUserVisitedRestaurant');
 const getAllVisitedRestaurant = require('./getAllVisitedRestaurant');
+const deleteUserVisitedRestaurant = require('./deleteUserVisitedRestaurant');
 
 module.exports = {
   getRestaurants,
@@ -14,4 +15,5 @@ module.exports = {
   getByCityId,
   addUserVisitedRestaurant,
   getAllVisitedRestaurant,
+  deleteUserVisitedRestaurant,
 };
