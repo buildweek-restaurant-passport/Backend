@@ -15,6 +15,10 @@ const create = (knex) => {
       .first();
   }
 
+  function getByCityID(id) {
+    return knex('restaurants').where('cityId', id);
+  }
+
   function insert(restaurant) {
     return knex('restaurants')
       .insert(restaurant)
@@ -42,6 +46,7 @@ const create = (knex) => {
     update,
     remove,
     getAll,
+    getByCityID,
   };
 };
 
