@@ -25,6 +25,19 @@ const create = (knex) => {
       .then(([id]) => getById(id));
   }
 
+  function getVisited(userId) {
+    return knex('restaurants as r')
+      .join('visited_restaurant as vr', 'vr.restaurant_id', 'r.id')
+      .join('users as u', 'u.id', 'vr.user_id')
+      .where('user_id', userId);
+  }
+
+  function addVisited(data) {
+    return knex('visited_restaurant')
+      .insert(data)
+      .then(() => getVisited(data.user_id));
+  }
+
   function update(id, changes) {
     return knex('restaurants')
       .where({ id })
@@ -47,6 +60,8 @@ const create = (knex) => {
     remove,
     getAll,
     getByCityID,
+    addVisited,
+    getVisited,
   };
 };
 
