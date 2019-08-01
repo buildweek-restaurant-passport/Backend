@@ -31,8 +31,7 @@ describe('[POST] [/api/v1/auth/restaurants] Create Restaurant Test suite [SUCCES
       lastName: 'dolo',
       password: '123456',
       email: 'dele@gmail.com',
-      cityId: '10004-3333-555',
-      city: 'New York city',
+      username: 'dele40',
     });
 
     const { token } = response.body.body;
@@ -146,8 +145,7 @@ describe('[POST] [/api/v1/auth/restaurants] Update Restaurant Test suite [SUCCES
       lastName: 'martins',
       password: '123456',
       email: 'lulu@gmail.com',
-      cityId: '10004-3333-555',
-      city: 'New York city',
+      username: 'lulu40',
     });
 
     const { token } = response.body.body;
