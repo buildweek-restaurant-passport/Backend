@@ -9,8 +9,7 @@ const user = {
   lastName: 'Demy',
   password: '123456',
   email: 'june@gmail.com',
-  cityId: '10004-3333-555',
-  city: 'New York city',
+  username: 'june40',
 };
 
 beforeAll(async () => {
@@ -20,10 +19,9 @@ beforeAll(async () => {
 
 // [/api/v1/auth/register] [SUCCESS]
 describe('[POST] [/api/v1/auth/register] Register Test suite [SUCCESS]', () => {
-  let response = null;
+  let response = {};
 
   beforeAll(async () => {
-    /* Runs before all tests */
     response = await request.post('/api/v1/auth/register').send(user);
   });
 
@@ -66,8 +64,7 @@ describe('[POST] [/api/v1/auth/register] Register Test suite [FAILURE]', () => {
       lastName: 'Demy',
       password: '123456',
       email: 'june@gmail.com',
-      cityId: '10004-3333-555',
-      city: 'New York city',
+      username: 'june40',
     });
     expect(response.status).toEqual(409);
   });
@@ -75,12 +72,11 @@ describe('[POST] [/api/v1/auth/register] Register Test suite [FAILURE]', () => {
 
 // [/api/v1/auth/login] [SUCCESS]
 describe('[POST] [/api/v1/auth/login] Login Test suite [SUCCESS]', () => {
-  let response = null;
+  let response = {};
 
   beforeAll(async () => {
-    /* Runs before all tests */
     response = await request.post('/api/v1/auth/login').send({
-      email: user.email,
+      username: user.username,
       password: user.password,
     });
   });
@@ -117,7 +113,7 @@ describe('[POST] [/api/v1/auth/login] Register Test suite [FAILURE]', () => {
   it('Should respond with status code 404', async () => {
     const response = await request.post('/api/v1/auth/login').send({
       password: '123456',
-      email: 'junefake@gmail.com',
+      username: 'june404',
     });
     expect(response.status).toEqual(404);
   });
@@ -125,7 +121,7 @@ describe('[POST] [/api/v1/auth/login] Register Test suite [FAILURE]', () => {
   it('Should respond with User does not exist', async () => {
     const response = await request.post('/api/v1/auth/login').send({
       password: '1234566',
-      email: 'june77@gmail.com',
+      username: 'june404',
     });
     expect(response.body.message).toEqual('User does not exist');
   });
@@ -133,7 +129,7 @@ describe('[POST] [/api/v1/auth/login] Register Test suite [FAILURE]', () => {
   it('Should respond with status code 400', async () => {
     const response = await request.post('/api/v1/auth/login').send({
       password: '12345688',
-      email: 'june@gmail.com',
+      username: 'june40',
     });
     expect(response.status).toEqual(400);
   });
