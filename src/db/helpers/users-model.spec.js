@@ -9,8 +9,7 @@ const userDetails = {
   lastName: 'AllFake',
   password: '123456',
   email: 'fake@yahoo.com',
-  cityId: '111-888-000',
-  city: 'Lagos',
+  username: 'fake40',
 };
 
 let createdUser = {};
@@ -30,8 +29,7 @@ describe('User Model helper functions Test suite', () => {
         firstName: 'Fake',
         lastName: 'AllFake',
         email: 'fake@yahoo.com',
-        cityId: '111-888-000',
-        city: 'Lagos',
+        username: 'fake40',
       });
     });
   });
@@ -44,8 +42,7 @@ describe('User Model helper functions Test suite', () => {
         firstName: 'Fake',
         lastName: 'AllFake',
         email: 'fake@yahoo.com',
-        cityId: '111-888-000',
-        city: 'Lagos',
+        username: 'fake40',
       });
     });
   });
@@ -58,8 +55,7 @@ describe('User Model helper functions Test suite', () => {
         firstName: 'Fake',
         lastName: 'AllFake',
         email: 'fake@yahoo.com',
-        cityId: '111-888-000',
-        city: 'Lagos',
+        username: 'fake40',
       });
     });
   });
@@ -71,10 +67,9 @@ describe('User Model helper functions Test suite', () => {
       newDetails = {
         id: createdUser.id,
         firstName: 'Fake',
-        lastName: 'AllFake',
+        lastName: 'AllFakeeee',
         email: 'fake@yahoo.com',
-        cityId: '111-888-000',
-        city: 'Abuja',
+        username: 'fake40',
       };
     });
 
