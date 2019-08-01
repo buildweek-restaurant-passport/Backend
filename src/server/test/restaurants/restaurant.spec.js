@@ -22,7 +22,7 @@ beforeAll(async () => {
 describe('[POST] [/api/v1/auth/restaurants] Create Restaurant Test suite [SUCCESS]', () => {
   let response = {};
 
-  beforeAll(async () => {
+  beforeEach(async () => {
     response = await request.post('/api/v1/auth/register').send({
       firstName: 'dele',
       lastName: 'dolo',
@@ -127,6 +127,36 @@ describe('Restaurant [GET (/api/v1/restaurants/:id)] Test suite', () => {
 
   it('Should have response data of length 1', () => {
     expect(response.body.body).toMatchObject(restaurant);
+  });
+});
+
+describe('Restaurant [GET (/api/v1/restaurants/city/:cityId)] Test suite', () => {
+  let response = {};
+
+  beforeAll(async () => {
+    response = await request.post('/api/v1/auth/register').send({
+      firstName: 'June',
+      lastName: 'louis',
+      password: '123456',
+      email: 'louis@gmail.com',
+      username: 'louis20',
+    });
+
+    const { token } = response.body.body;
+
+    response = await request.get('/api/v1/restaurants/city/10004-3333-555').set('Authorization', token);
+  });
+
+  it('Should respond with status code of 200', async () => {
+    expect(response.status).toEqual(200);
+  });
+
+  it('Should have response body with success true', () => {
+    expect(response.body.success).toBeTruthy();
+  });
+
+  it('Should have response data of length 1', () => {
+    expect(response.body.body).toHaveLength(1);
   });
 });
 
