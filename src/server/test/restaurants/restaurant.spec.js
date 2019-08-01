@@ -16,16 +16,13 @@ const restaurant = {
 };
 
 beforeAll(async () => {
-  /* Runs before all tests */
   await db('restaurants').truncate();
 });
 
-// [/api/v1/auth/restaurants] [SUCCESS]
 describe('[POST] [/api/v1/auth/restaurants] Create Restaurant Test suite [SUCCESS]', () => {
-  let response = null;
+  let response = {};
 
   beforeAll(async () => {
-    /* Runs before all tests */
     response = await request.post('/api/v1/auth/register').send({
       firstName: 'dele',
       lastName: 'dolo',
@@ -68,7 +65,6 @@ describe('[POST] [/api/v1/auth/restaurants] Create Restaurant Test suite [SUCCES
   });
 });
 
-// [/api/v1/auth/restaurants] [FAILURE]
 describe('[POST] [/api/v1/auth/restaurants] Invalid token Test suite [FAILURE]', () => {
   let response = null;
 
@@ -134,7 +130,6 @@ describe('Restaurant [GET (/api/v1/restaurants/:id)] Test suite', () => {
   });
 });
 
-// [/api/v1/auth/restaurants] [SUCCESS]
 describe('[POST] [/api/v1/auth/restaurants] Update Restaurant Test suite [SUCCESS]', () => {
   let response = null;
 
