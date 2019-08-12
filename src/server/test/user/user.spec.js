@@ -13,27 +13,25 @@ const user = {
 };
 
 beforeAll(async () => {
-  /* Runs before all tests */
   await db('users').truncate();
 });
 
-// [/api/v1/auth/register] [SUCCESS]
-describe('[POST] [/api/v1/auth/register] Register Test suite [SUCCESS]', () => {
+describe('[POST] [/api/v1/auth/register] User registration Test suite [SUCCESS]', () => {
   let response = {};
 
   beforeAll(async () => {
     response = await request.post('/api/v1/auth/register').send(user);
   });
 
-  it('Should return response body as JSON', () => {
-    expect(response.type).toBe('application/json');
+  it('Should have response header of application/json', () => {
+    expect(response.type).toEqual('application/json');
   });
 
   it('Should respond with status code of 201', () => {
     expect(response.status).toEqual(201);
   });
 
-  it('Should have response body with success', () => {
+  it('Should have response body with success of true', () => {
     expect(response.body.success).toBeTruthy();
   });
 
